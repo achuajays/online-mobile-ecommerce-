@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>User List</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include Tailwind CSS styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="font-sans bg-gray-100">
+
+    <div class="max-w-screen-xl mx-auto p-8">
+        <h2 class="text-2xl font-semibold mb-4">User List</h2>
+
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            {% if n %}
+                <ul>
+                    {% for user in n %}
+                        <a href="{% url 'ud' user.id %}"><li class="text-blue-800 mb-2">{{ user.username }} </li></a>
+                        <!-- Add more fields as needed -->
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-gray-600">No users found.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="" async defer></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Product</title>
+    <!-- Include Tailwind CSS styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+<body class="font-sans bg-gray-100 p-8">
+
+    <div class="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
+        <h2 class="text-2xl font-semibold mb-6">Sell Product</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-600">Name:</label>
+                <input type="text" id="name" name="name"
+                    class="w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="model" class="block text-sm font-medium text-gray-600">Model:</label>
+                <input type="text" id="model" name="model"
+                    class="w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-600">Email:</label>
+                <input type="email" id="email" name="email"
+                    class="w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="description" class="block text-sm font-medium text-gray-600">Description:</label>
+                <textarea id="description" name="discription"
+                    class="w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                    required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="image" class="block text-sm font-medium text-gray-600">Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+
+            <button type="submit"
+                class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none">Sell</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

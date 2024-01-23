@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Verification</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include Tailwind CSS styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans p-8">
+
+    <h2 class="text-4xl mb-4">Verification</h2>
+
+    {% if n == 'no obj' %}
+    {{ m }}
+        <!-- Handle case when there is no object -->
+    {% else %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for object in n %}
+            <img src="{{ object.img.url }}" width="400px">
+                <div class="bg-white p-6 rounded-md shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">{{ object.name }}</h3>
+                    <p class="text-gray-600 mb-2">{{ object.model }}</p>
+                    <p class="text-gray-600 mb-2">{{ object.email }}</p>
+                    
+                    <a href="{% url 'ver' object.id %}" class="text-blue-500 hover:underline block mt-4">Verify</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    
+
+    <script src="" async defer></script>
+</body>
+</html>

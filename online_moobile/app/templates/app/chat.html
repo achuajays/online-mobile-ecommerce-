@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Chat Page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include Tailwind CSS styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="font-sans bg-gray-100 p-8">
+
+    <div class="max-w-screen-xl mx-auto">
+        {% if  m == 'no obj' %}
+            <!-- User View -->
+            <div class="bg-white rounded-md p-4 mb-8">
+                {% for i in n %}
+                    <div class="mb-4 border-b pb-2">
+                        <span class="text-blue-500 font-semibold">{{ i.user.username }}:</span>
+                        <span class="ml-2">{{ i.message_f }}</span>
+                    </div>
+                {% endfor %}
+                
+                <form method='post' class="mt-4">
+                    {% csrf_token %}
+                    <label for="m" class="block text-sm font-medium text-gray-600 mb-2">Message:</label>
+                    <input type="text" id="m" name="m" class="w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 mb-4">
+
+                    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none">Send</button>
+                </form>
+            </div>
+        {% else %}
+            <!-- Admin View -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold mb-4">Chat Messages</h2>
+                <div class="overflow-y-auto max-h-64 border rounded-md p-4 bg-white">
+                    {% for message in n %}
+                        <div class="mb-2">
+                            <span class="font-semibold text-blue-500">{{ message.user.username }}:</span>
+                            <span class="ml-2">{{ message.message_f }}  ->   <a href="{% url 'c' message.user.id %}" class="text-blue-500">Message</a></span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <a href="{% url 'home' %}" style="color:blue;">Home</a>
+
+    <script src="" async defer></script>
+</body>
+</html>

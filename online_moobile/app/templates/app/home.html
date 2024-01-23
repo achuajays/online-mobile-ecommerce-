@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Page</title>
+    <!-- Include Tailwind CSS styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+    <div class="container mx-auto my-8 p-8 bg-white rounded shadow-md">
+        {{ u }}
+        <h1 class="text-4xl font-bold mb-4">Welcome to my page!</h1>
+        <p class="text-lg mb-4">Please click the links below:</p>
+
+        <div class="flex flex-wrap space-x-4">
+            <a href="{% url 'logout' %}" class="text-blue-500 hover:underline">Logout</a>
+            <a href="{% url 'verify' %}" class="text-blue-500 hover:underline">Verify</a>
+            <a href="{% url 'buy' %}" class="text-blue-500 hover:underline">Buy</a>
+            <a href="{% url 'sell' %}" class="text-blue-500 hover:underline">Sell</a>
+            <a href="{% url 'exchange' %}" class="text-blue-500 hover:underline">Exchange</a>
+            <a href="{% url 'chat' %}" class="text-blue-500 hover:underline">Chat</a>
+            <a href="{% url 'service' %}" class="text-blue-500 hover:underline">Service</a> 
+            <a href="{% url 'ca' u.id %}" class="text-blue-500 hover:underline">Cart</a> 
+            <a href="{% url 'ord' u.id %}" class="text-blue-500 hover:underline">Order of {{ u }} </a> 
+            {% if u.username == 'admin' %}
+            <a href="{% url 'de' %}" class="text-blue-500 hover:underline">Delete</a>
+            {% endif %}
+        </div>
+
+        <!-- Duplicate 'Logout' link removed for clarity -->
+    </div>
+
+</body>
+</html>
